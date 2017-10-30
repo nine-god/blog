@@ -13,10 +13,10 @@
               </p>
             </section>
             <footer>
-              <p class="blog-post-meta"><%= article.created_at  %> by <a><%= article.user.email%></a></p>
+              <p class="blog-post-meta"> <%= link_to  article.user.name , home_about_path , {class: ""} %> | <%= article.created_at  %> </p>
             </footer>
           </article>
-          <div role="separator" class="divider"></div>
+          <hr>
           <% end %>
         </div>
       </div><!-- /.row -->

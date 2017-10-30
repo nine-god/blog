@@ -5,4 +5,12 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :articles
+
+  validate :create_default_name 
+
+  def create_default_name
+  	self.name = email if name.nil? || name==""
+  end
+
+
 end
