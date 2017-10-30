@@ -5,7 +5,7 @@
         <% @articles.each do |article| %>
           <article>
             <header>
-              <h1><%= link_to article.title, article %> </h1>
+              <h1><%= article.title %></h1>
             </header>
             <section>
               <p >
@@ -13,10 +13,9 @@
               </p>
             </section>
             <footer>
-              <p class="blog-post-meta"><%= article.created_at  %> by <a><%= article.user.email%></a></p>
+              <p class="blog-post-meta">January 1, 2014 by <a href="#">Mark</a></p>
             </footer>
           </article>
-          <div role="separator" class="divider"></div>
           <% end %>
         </div>
       </div><!-- /.row -->

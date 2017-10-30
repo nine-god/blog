@@ -1,10 +1,8 @@
 Rails.application.routes.draw do
-  get 'articles/index'
-
-  get 'home/show'
-  get "home/about"
-
-  get 'welcome/index'
+  resources :articles
+  devise_for :users
+  get 'home/about'
   root "home#show"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
+
