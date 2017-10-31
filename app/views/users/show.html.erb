@@ -1,0 +1,23 @@
+
+
+<div class="container">
+	<div class="row">
+		<p>
+		  <strong>名字</strong>
+		  <%= @user.name %>
+		</p>
+
+		<p>
+		  <strong>Email:</strong>
+		  <%= @user.email %>
+		</p>
+		<p>
+		  <strong>简介</strong>
+		  <%= @user.profile %>
+		</p>
+		<% if user_signed_in? && current_user.id == @user.id %>
+		<%= link_to '编辑', edit_user_path(@user),{ class: "btn btn-default"} %>  
+		<% end %>
+
+	</div>
+</div>
