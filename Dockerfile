@@ -1,7 +1,6 @@
 FROM ruby:2.4.1
 MAINTAINER cym2017 191176233@qq.com
 
-
 RUN apt-get update
 # 安装 JS runtime，一定要装
 RUN apt-get install -y nodejs

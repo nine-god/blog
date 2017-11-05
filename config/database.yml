@@ -6,9 +6,9 @@
 #
 default: &default
   adapter: mysql2
-  host: localhost
+  host: <%= ENV["DB_IP"] %>
   username: root
-  password: admin123
+  password: <%= ENV["DB_PWD"] %>
   pool: 64
   timeout: 5000
   encoding: utf8
