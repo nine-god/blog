@@ -18,7 +18,14 @@ module Blog
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
 
-    config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+    ActionMailer::Base.smtp_settings = {
+      :address        => "smtp.qq.com", # default: localhost
+      :port           => '587',   # default: 25
+      :domain         => "qq.com",               
+      :user_name      => ENV["EMAIL_USER_NAME"],
+      :password       => ENV["EMAIL_KEY_BASE"],
+      :authentication => :plain                 # :plain, :login or :cram_md5
+    }
 
   end
 end
