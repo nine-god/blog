@@ -83,8 +83,13 @@ module Devise
       #           subject: '...'
       #
       def subject_for(key)
-        if key == :reset_password_instructions
-          "九神小屋 帐号找回密码"
+        case key 
+        when :confirmation_instructions
+        	"九神小屋 帐号激活"
+        when :reset_password_instructions
+        	"九神小屋 帐号找回密码"
+		when :unlock_instructions
+			"九神小屋 帐号解锁"
         else
           I18n.t(:"#{devise_mapping.name}_subject", scope: [:devise, :mailer, key],
             default: [:subject, key.to_s.humanize])
