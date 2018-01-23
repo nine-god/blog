@@ -10,6 +10,6 @@ RUN apt-get install -y nodejs
 
 # 安装 Rails 环境
 # 使用rubychina gems源
-RUN gem source -a https://gems.ruby-china.org
-RUN bundle config mirror.https://rubygems.org https://gems.ruby-china.org
+# RUN gem source -a https://gems.ruby-china.org
+# RUN bundle config mirror.https://rubygems.org https://gems.ruby-china.org
 RUN bundle install
