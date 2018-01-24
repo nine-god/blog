@@ -16,9 +16,9 @@
     <%= form.text_field :title, id: :article_title %>
   </div>
 
+  <%= render 'shared/editor_toolbar'%>
   <div class="field">
-    <%= form.label :text %>
-    <%= form.text_area :text, id: :article_text %>
+    <%= form.text_area :text, {id: :article_text , class: "form-control"} %>
   </div>
 
 

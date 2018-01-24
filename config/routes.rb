@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :articles
+  resources :articles do 
+  	collection do 
+  		post :preview
+  	end
+  end
   
   devise_for :users
   resources :users

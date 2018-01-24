@@ -1,0 +1,22 @@
+/*
+ *= require_self
+ *= require articles
+ */
+
+.editor-toolbar .nav-pills > li.active > a:link, .editor-toolbar .nav-pills > li.active > a:visited, .editor-toolbar .nav-pills > li.active > a:hover {
+    background-color: #d0d0d0;
+    color: #666;
+}
+.editor-toolbar .nav-pills > li > a {
+	border-radius: 3px 3px 0 0;
+	padding: 3px 23px;
+	margin-right: 5px;
+	background-color: #f0f0f0;
+	color: #999;
+}
+
+.field .form-control {
+	height:auto;
+}
+
+

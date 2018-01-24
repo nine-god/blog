@@ -36,6 +36,13 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'devise'
 
+# HTML Pipeline
+gem 'html-pipeline'
+# gem 'html-pipeline-rouge_filter'
+# gem 'redcarpet'
+# gem 'auto-space'
+gem 'commonmarker'
+# gem 'github-linguist'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

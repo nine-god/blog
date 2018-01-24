@@ -4,7 +4,7 @@
 	<div class="row">
 		<h2 class="text-center" ><%= @article.title %></h2>
 		<p>
-		  <%= @article.text %>
+		  <%= raw markdown @article.text %>
 		</p>
 
 
