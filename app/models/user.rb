@@ -9,7 +9,7 @@ class User < ApplicationRecord
   validate :create_default_name 
 
   def create_default_name
-  	self.name = email if name.nil? || name==""
+  	# self.name = username if name.nil? || name==""
   end
 
 

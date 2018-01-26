@@ -6,6 +6,13 @@
 
 $(document).on "turbolinks:load", ->
   init_article()
+  init_home_show()
+  console.log(window.location.pathname)
+
+init_home_show = -> 
+  # if window.location.pathname == "/"
+    # $('body').css("background",'#FFFFFF') 
+
 
 preview = (body) ->
   $("#preview").text "Loading..."

@@ -1,25 +1,36 @@
 <div class="container">
   <div class="row">
-    <div class="blog-main col-sm-8 col-sm-offset-2">
-      <% @articles.each do |article| %>
-        <article>
-          <header>
-            <h1><%= link_to article.title, article %> </h1>
-          </header>
-          <section>
-            <p >
-            <%= article.text[0..200]+"..."%>
-            </p>
-          </section>
-          <footer>
-            <p class="blog-post-meta"> <%= link_to  article.user.name , home_about_path , {class: ""} %> | <%= article.created_at  %> </p>
-          </footer>
-        </article>
-        <% if @articles.last != article %>
-          <hr>
+    <div class="col-md-9 ">
+      <div class="articles articles-index panel">
+        <% @articles.each do |article| %>
+          <article>
+            <header>
+              <h1><%= link_to article.title, article %> </h1>
+            </header>
+            <section>
+              <p >
+              <%= article.text[0..200]+"..."%>
+              </p>
+            </section>
+            <footer>
+              <p class="blog-post-meta"> <%= link_to  article.user.name , home_about_path , {class: ""} %> | <%= article.created_at  %> </p>
+            </footer>
+          </article>
+          <% if @articles.last != article %>
+            <hr>
+          <% end %>
         <% end %>
-      <% end %>
-    </div>
+      </div>
+    </div> <!-- /.col-md-9 -->
+    <div class="sidebar col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-heading">社区规则</div>
+        <ul class="list-group">
+          <li class="list-group-item"><i class="fa fa-archive"></i> <a href="https://ruby-china.org/topics/24325">提问的智慧</a></li>
+          <li class="list-group-item"><i class="fa fa-heart"></i> <a href="http://blog.steveklabnik.com/posts/2011-08-19-matz-is-nice-so-we-are-nice" target="_blank">Matz is Nice So We Are Nice</a></li>
+        </ul>
+      </div>
+    </div>  <!-- /.col-md-3 -->
   </div><!-- /.row -->
 
 </div>

@@ -1,7 +1,17 @@
 /*
  *= require_self
+ *= require application
  *= require articles
  */
+
+body {
+	/*background-color:#E5E5E5;*/
+}
+
+a:link {color:#333333;}		/* 未被访问的链接 */
+a:visited {color:#333333;}	/* 已被访问的链接 */
+a:hover {color:#333333;}	/* 鼠标指针移动到链接上 */
+a:active {color:#333333;}	/* 正在被点击的链接 */
 
 .editor-toolbar .nav-pills > li.active > a:link, .editor-toolbar .nav-pills > li.active > a:visited, .editor-toolbar .nav-pills > li.active > a:hover {
     background-color: #d0d0d0;
