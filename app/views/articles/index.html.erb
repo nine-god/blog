@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-9 ">
+    <div class="col-md-10 col-md-offset-1">
       <div class="articles articles-index panel">
         <% @articles.each do |article| %>
           <article>
@@ -9,7 +9,7 @@
             </header>
             <section>
               <p >
-              <%= article.text[0..200]+"..."%>
+              <%= link_to generate_abstract_tag(article.text,200), article %>
               </p>
             </section>
             <footer>
@@ -21,16 +21,7 @@
           <% end %>
         <% end %>
       </div>
-    </div> <!-- /.col-md-9 -->
-    <div class="sidebar col-md-3">
-      <div class="panel panel-default">
-        <div class="panel-heading">社区规则</div>
-        <ul class="list-group">
-          <li class="list-group-item"><i class="fa fa-archive"></i> <a href="https://ruby-china.org/topics/24325">提问的智慧</a></li>
-          <li class="list-group-item"><i class="fa fa-heart"></i> <a href="http://blog.steveklabnik.com/posts/2011-08-19-matz-is-nice-so-we-are-nice" target="_blank">Matz is Nice So We Are Nice</a></li>
-        </ul>
-      </div>
-    </div>  <!-- /.col-md-3 -->
+    </div> <!-- /.col-md-12 -->
   </div><!-- /.row -->
 
 </div>

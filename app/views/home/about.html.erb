@@ -1,14 +1,13 @@
 <div class="container panel">
-
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
       <div class="blog-header">
         <h1 class="blog-title">关于小屋</h1>
         <p class="lead blog-description">一个懒癌晚期、兼妄想症病患，为实现多年的夙愿，搭建了这个简陋的小屋，表表自己抗争疾病的决心吧。</p>
         <h1 class="blog-title">当前住户</h1>
       </div>
 
-      <div class="row">
-        
-        <div class="col-sm-12 blog-main">
+        <div class="blog-main">
         <% @users.each do |user| %>
           <div class="blog-post">
             <h2 class="blog-post-title"><%= user.name != "" ? user.username + "(#{user.name})" : user.username %></h2>
@@ -22,6 +21,6 @@
 
         </div><!-- /.blog-main -->
 
-      </div><!-- /.row -->
-
     </div>
+  </div><!-- /.row -->
+</div>
