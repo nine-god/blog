@@ -11,14 +11,13 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title, id: :article_title %>
+  <div class="field article-header">
+      <%= form.text_field :title, {id: :article_title , class: "form-control h1 text-center" ,placeholder: "填写标题名称"} %>
   </div>
 
   <%= render 'shared/editor_toolbar'%>
   <div class="field">
-    <%= form.text_area :text, {id: :article_text , class: "form-control",rows: 10} %>
+    <%= form.text_area :text, {id: :article_text , class: "form-control",placeholder: "仅支持Markdown格式填写内容",rows: 10} %>
   </div>
 
 

@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-10 col-md-offset-1">
-      <div class="articles articles-index panel">
+      <div class="articles-index">
         <% @articles.each do |article| %>
           <article>
             <header>
@@ -9,11 +9,11 @@
             </header>
             <section>
               <p >
-              <%= link_to generate_abstract_tag(article.text,200), article %>
+              <%= generate_abstract_tag(article.text,300) + (link_to " » ", article) %>
               </p>
             </section>
             <footer>
-              <p class="blog-post-meta"> <%= link_to  article.user.name , home_about_path , {class: ""} %> | <%= article.created_at  %> </p>
+              <p class="blog-post-meta"> <%= link_to  article.user.name , user_path(article.user_id) , {class: ""} %> | <%= change_time_style article.created_at  %> </p>
             </footer>
           </article>
           <% if @articles.last != article %>

@@ -1,15 +1,15 @@
-
-
 <div class="container">
 	<div class="row">
-		<h2 class="text-center" ><%= @article.title %></h2>
-		<p>
-		  <%= raw markdown @article.text %>
-		</p>
+		<div class="col-md-10 col-md-offset-1">
+			<h1 class="text-center" ><%= @article.title %></h1>
+			<p>
+			  <%= raw markdown @article.text %>
+			</p>
 
 
-		<% if user_signed_in? && current_user.id == @article.user_id %>
-		<%= link_to '编辑', edit_article_path(@article),{ class: "btn btn-default"} %>  <%= link_to '删除', @article, {method: :delete,class: "btn btn-default", data: { confirm: '删除后，将无法恢复！确定要删除？' }} %>
-		<% end %>
+			<% if user_signed_in? && current_user.id == @article.user_id %>
+			<%= link_to '编辑', edit_article_path(@article),{ class: "btn btn-default"} %>  <%= link_to '删除', @article, {method: :delete,class: "btn btn-default", data: { confirm: '删除后，将无法恢复！确定要删除？' }} %>
+			<% end %>
+		</div>
 	</div>
 </div>
