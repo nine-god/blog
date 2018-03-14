@@ -20,6 +20,12 @@
             <hr>
           <% end %>
         <% end %>
+
+      </div>
+      <div class="text-center">
+        <ul class="pagination">
+          <%= generate_pagination(total: @total,offset: @offset , limit: @limit)%>
+        </ul>
       </div>
     </div> <!-- /.col-md-12 -->
   </div><!-- /.row -->

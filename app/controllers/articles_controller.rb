@@ -4,7 +4,10 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.all.order("created_at desc")
+    @offset = params[:offset] || 0
+    @limit = params[:limit] || 10
+    @total = Article.count
+    @articles = Article.order("created_at desc").offset(@offset).limit(@limit)
   end
 
   # GET /articles/1
