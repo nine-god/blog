@@ -3,7 +3,7 @@ module ApplicationHelper
 		text = strip_tags markdown html
 		# text = markdown html
 		# text = strip_tags(html)
-		text = text.delete("\n\r")[0..length] 
+		text = text.delete("\n\r")[0..length] unless text.blank?
 		return raw text
 	end
 	def markdown(body)
