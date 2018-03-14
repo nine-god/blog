@@ -12,6 +12,6 @@ module ApplicationHelper
 		return result
 	end
 	def change_time_style(time)
-		time.strftime("%Y-%m-%d %H:%M:%S")
+		time.strftime("%Y-%m-%d")
 	end
 end

@@ -28,3 +28,12 @@
 .article-header input.form-control{
 	font-size: 36px;
 }
+
+.article .info,
+.article .info a{
+	color:#9EABB3;
+}
+.article .info a:hover {
+	color:#9EABB3;
+	text-decoration: underline;
+}
