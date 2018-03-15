@@ -34,7 +34,7 @@
 
   </head>
 
-  <body>
+  <body data-controller-name="<%= controller_name %>" >
 	<nav class="navbar navbar-default">
 	  <div class="container">
 	    <!-- Brand and toggle get grouped for better mobile display -->
@@ -52,9 +52,9 @@
 	    <!-- Collect the nav links, forms, and other content for toggling -->
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	      <ul class="nav navbar-nav">
-	      
-	      	<li><%= link_to "目录" , articles_path , {class: ""} %></li>
-	      	<li><%= link_to "关于" , home_about_path , {class: ""} %></li>
+	      	<li id="nav_home" ><%= link_to "首页" , root_path , {class: ""} %></li>
+	      	<li id="nav_articles" ><%= link_to "目录" , articles_path , {class: ""} %></li>
+			<li id="nav_about" ><%= link_to "关于" , about_path , {class: ""} %></li>
 	      </ul>
 
 	      <ul class="nav navbar-nav navbar-right">

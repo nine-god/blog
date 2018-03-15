@@ -1,4 +1,11 @@
-window.articles = 
+window.ArticleView = Backbone.View.extend
+  el: "body"
+
+  initialize: () ->
+    $('#nav_articles').addClass("active")
+    @init_edit()
+    @init_button_goto_url()
+
   preview: (body) ->
     $("#preview").text "Loading..."
     $.post "/articles/preview",
@@ -7,7 +14,8 @@ window.articles =
         $("#preview").html data.body
       "json"
 
-  init_article: ->
+  init_edit: (e) ->
+    self = @
     preview_box = $(document.createElement("div")).attr "id", "preview"
     preview_box.addClass("markdown form-control")
     $('textarea').after preview_box
@@ -25,8 +33,10 @@ window.articles =
       $(this).parent().addClass("active")
       $(preview_box).show()
       $('textarea').hide()
-      articles.preview($('textarea').val())
+      self.preview($('textarea').val())
       return false
+      
+  init_button_goto_url: () ->
     $("#button_go_url").click ->
       url = $("#button_go_url").attr('url')
       limit = $("#button_go_url").attr('limit')

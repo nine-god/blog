@@ -2,13 +2,24 @@
 #= require turbolinks
 #= require underscore
 #= require backbone
-#= require articles
 #= require home
+#= require articles
+#= require abouts
+
+
+
+AppView = Backbone.View.extend
+  el: "body"
+
+  initialize: ->
+    switch($('body').data('controller-name'))
+      when 'articles'
+        window._articleView = new ArticleView()
+      when 'home'
+        window._homeView = new HomeView()
+      when 'abouts'
+        window._aboutView = new AboutView()
+    
 
 $(document).on "turbolinks:load", ->
-  articles.init_article()
-  home.init_show()
-
-
-
-
+  window._appView = new AppView()
