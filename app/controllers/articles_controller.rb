@@ -7,7 +7,7 @@ class ArticlesController < ApplicationController
     @offset = params[:offset] || 0
     @limit = params[:limit] || 10
     @total = Article.count
-    @articles = Article.order("created_at desc").offset(@offset).limit(@limit)
+    @articles = Article.order("updated_at desc").offset(@offset).limit(@limit)
   end
 
   # GET /articles/1
