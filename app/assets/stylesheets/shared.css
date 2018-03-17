@@ -1,0 +1,62 @@
+.jump_top,
+.jump_bottom{
+	position:fixed;
+	right:40px;
+	bottom:140px;
+	height:50px;
+	width: 50px; 
+	text-align:center;
+	padding-top:20px; 
+	background-color: #0ebaa6;
+	border-radius: 20%;
+	overflow: hidden;
+}
+
+.jump_top_in,
+.jump_bottom_in{
+	display:inline-block;
+	height:20px;
+	width: 20px;
+	border: 3px solid black;
+	border-color: #fff transparent transparent #fff;
+	transform:rotate(45deg);
+	-ms-transform:rotate(45deg); /* Internet Explorer */
+	-moz-transform:rotate(45deg); /* Firefox */
+	-webkit-transform:rotate(45deg); /* Safari 和 Chrome */
+	-o-transform:rotate(45deg); /* Opera */
+}
+.jump_top a,
+.jump_bottom a {
+	display:none;
+	color:#fff;
+	height:40px;
+	width: 40px;
+	padding-top:5px; 
+	text-decoration:none;
+	text-align:center;
+	font-weight:bold;
+}
+.jump_top:hover,
+.jump_bottom:hover{
+	padding-top:0px; 
+}
+.jump_top:hover .jump_top_in,
+.jump_bottom:hover .jump_bottom_in{
+	display:none;
+}
+.jump_top:hover a,
+.jump_bottom:hover a{
+	display:inline-block;
+}
+
+.jump_bottom{
+	bottom:80px;
+	padding-top:10px; 
+}
+
+.jump_bottom_in{
+	border-color:  transparent #fff  #fff transparent;
+}
+.jump_bottom a {
+	padding-top:5px; 
+}

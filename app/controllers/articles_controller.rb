@@ -5,7 +5,7 @@ class ArticlesController < ApplicationController
   # GET /articles.json
   def index
     @offset = params[:offset] || 0
-    @limit = params[:limit] || 10
+    @limit = params[:limit] || 6
     @total = Article.count
     @articles = Article.order("updated_at desc").offset(@offset).limit(@limit)
   end
