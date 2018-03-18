@@ -13,7 +13,7 @@
               </p>
             </section>
             <footer>
-              <p class="blog-post-meta"> <%= link_to  article.user.name.blank? ? article.user.email : article.user.name , user_path(article.user_id) , {class: ""} %> | 最后更新：<%= change_time_style article.updated_at %> </p>
+              <p class="blog-post-meta"> <%= link_to  article.user.name.blank? ? article.user.email : article.user.name , user_path(article.user_id) , {class: ""} %> | 最后更新：<%= change_time_style article.updated_at %></p>
             </footer>
           </article>
           <% if @articles.last != article %>
