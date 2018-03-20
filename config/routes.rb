@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   
   devise_for :users
   resources :users
-  resource :about
+  resource :abouts
   
   # get 'home/about' 
   root "home#show"

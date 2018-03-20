@@ -2,7 +2,12 @@
   <div class="row">
     <div class="col-md-10 col-md-offset-1">
       <h2>关于小屋</h2>
-      <p class="lead">一个懒癌晚期、兼妄想症病患，为实现多年的夙愿，搭建了这个简陋的小屋，表表自己抗争疾病的决心吧。</p>
+      <p class="lead"><%= raw markdown @about.text %></p>
+
+      <% if user_signed_in?  %>
+      <%= link_to '编辑', edit_abouts_path(@about),{ class: "btn btn-default"} %>  
+      <% end %>
+
       <h2>当前住户</h2>
       <div class="panel-body" >
       <div class="container">
