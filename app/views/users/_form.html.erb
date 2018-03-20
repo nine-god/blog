@@ -22,7 +22,11 @@
   </div>
   <div class="field">
     <%= form.label '简介' %>
-    <%= form.text_area :profile, id: :user_profile %>
+  </div>
+
+  <%= render 'shared/editor_toolbar'%>
+  <div class="field">
+    <%= form.text_area :profile, {id: :user_profile , class: "form-control",placeholder: "仅支持Markdown格式填写内容",rows: 10} %>
   </div>
 
 

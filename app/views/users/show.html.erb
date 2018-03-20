@@ -14,7 +14,7 @@
 			</p>
 			<p>
 			  <strong>简介</strong>
-			  <%= @user.profile %>
+			  <%= raw markdown @user.profile %>
 			</p>
 			<% if user_signed_in? && current_user.id == @user.id %>
 			<%= link_to '编辑', edit_user_path(@user),{ class: "btn btn-default"} %>  

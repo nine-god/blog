@@ -5,6 +5,7 @@
 #= require home
 #= require articles
 #= require abouts
+#= require users
 
 
 
@@ -23,6 +24,9 @@ AppView = Backbone.View.extend
         window._homeView = new HomeView()
       when 'abouts'
         window._aboutView = new AboutView()
+        @init_edit()
+      when 'users'
+        window._userView = new UserView()
         @init_edit()
     @init_scroll()
 
