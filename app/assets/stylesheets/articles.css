@@ -37,3 +37,13 @@
 	color:#9EABB3;
 	text-decoration: underline;
 }
+
+.pagination a {
+	/*color:#03baa6 ;*/
+}
+
+.pagination > li > a:focus, .pagination > li > a:hover, .pagination > li > span:focus, .pagination > li > span:hover {
+	color: #fff;
+	background-color: #12a191;
+	border-color: #ddd;
+}

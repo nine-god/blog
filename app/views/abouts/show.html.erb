@@ -15,7 +15,7 @@
         <% @users.each do |user| %>
           <div class="user-label col-md-1">
               <h4>
-                <span><%= link_to  user.username ,user_path(user) ,{class: "label label-primary"}%></span>
+                <span><%= link_to  user.username ,user_path(user) ,{class: "label"}%></span>
               </h4>
           </div>
         <% end %>
