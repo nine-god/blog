@@ -6,7 +6,7 @@
 #= require articles
 #= require abouts
 #= require users
-
+#= require editor
 
 
 AppView = Backbone.View.extend
@@ -55,7 +55,8 @@ AppView = Backbone.View.extend
     preview_box.addClass("markdown form-control")
     $('textarea').after preview_box
     preview_box.hide()
-
+    window._editor = new Editor()
+    
     $(".edit a").click ->
       $(".preview").removeClass("active")
       $(this).parent().addClass("active")

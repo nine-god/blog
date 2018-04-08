@@ -20,3 +20,6 @@
 /yarn-error.log
 
 .byebug_history
+
+# 忽略掉image缓存
+/public/photo

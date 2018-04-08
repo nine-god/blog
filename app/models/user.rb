@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,:recoverable, :lockable,
   		 :rememberable, :trackable, :validatable , :confirmable
   has_many :articles
-
+  has_many :photos
   validate :create_default_name 
 
   def create_default_name
