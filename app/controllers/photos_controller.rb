@@ -34,12 +34,18 @@ class PhotosController < ApplicationController
 	      source_data = File.read(file_path)
 	    else
 	    	photo_url = "http://#{request.host_with_port}/photo/"+filename
-			p photo = Photo.where(name: photo_url).first
+			photo = Photo.where(name: photo_url).first
 			source_data = Base64.decode64(photo.data)
 			image_file = File.new(file_path, "w")
 			image_file.syswrite(source_data)
 			image_file.close
-
+			begin
+				#尝试向nginx 静态文件目录复制文件
+				image_file = File.new('/photo/'+filename, "w")
+				image_file.syswrite(source_data)
+				image_file.close
+			rescue Exception => e
+			end
 	    end
 	    send_data( source_data, :filename => filename )
 	end
