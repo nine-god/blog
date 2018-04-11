@@ -34,7 +34,11 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# 用户系统
 gem 'devise'
+
+#照片处理
+gem "mini_magick"
 
 # HTML Pipeline
 gem 'html-pipeline'
