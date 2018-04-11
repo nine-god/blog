@@ -22,4 +22,5 @@
 .byebug_history
 
 # 忽略掉image缓存
-/public/photo
+/public/photo/*
+!/public/photo/.keep
