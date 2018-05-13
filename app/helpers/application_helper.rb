@@ -8,7 +8,7 @@ module ApplicationHelper
 	end
 	def markdown(body)
 		return nil if body.blank?
-		result = BLOG::Markdown.call(body)
+		result = Blog::Markdown.call(body)
 		return result
 	end
 	def change_time_style(time)

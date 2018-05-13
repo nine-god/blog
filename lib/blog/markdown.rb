@@ -4,7 +4,7 @@ Pipeline = HTML::Pipeline.new [
   # HTML::Pipeline::SyntaxHighlightFilter
 ]
 
-module BLOG
+module Blog
 	class Markdown
 		class << self
 			def call(body)

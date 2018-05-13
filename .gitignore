@@ -24,3 +24,4 @@
 # 忽略掉image缓存
 /public/photo/*
 !/public/photo/.keep
+/public/nginx_photo/*
