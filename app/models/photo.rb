@@ -10,7 +10,7 @@ class Photo < ApplicationRecord
 	validates :name, presence: true
 	validates :data, presence: true
 	after_save :create_file
-
+	after_find :create_file
 	def before_create
 		file_name = File.basename(file.path)
 		mini_image = Blog::PhotoMagick.mini(file)

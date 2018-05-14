@@ -23,8 +23,7 @@ class PhotosController < ApplicationController
 	      source_data = File.read(file_path)
 	    else
 	    	photo_url = "http://#{request.host_with_port}/photo/"+filename
-			photo = Photo.where(name: photo_url).first
-			photo.create_file
+			photo = Photo.where(name: photo_url).first			
 			source_data = photo.source_data
 	    end
 	    send_data( source_data, :filename => filename )
