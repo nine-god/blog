@@ -8,20 +8,16 @@
       <%= link_to '编辑', edit_abouts_path(@about),{ class: "btn btn-default"} %>  
       <% end %>
 
-      <h2>当前住户</h2>
+      <!-- <h2>当前住户</h2>
       <div class="panel-body" >
-      <div class="container">
-        <div class="row">
         <% @users.each do |user| %>
-          <div class="user-label col-md-1">
+          <div class="user-label">
               <h4>
                 <span><%= link_to  user.username ,user_path(user) ,{class: "label"}%></span>
               </h4>
           </div>
         <% end %>
-        </div>
-      </div>
-      </div> <!-- <div class="panel-body" > -->
+      </div>  -->
     </div>
 
 

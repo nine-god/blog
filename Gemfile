@@ -35,8 +35,13 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 # 用户系统
-gem 'devise'
+# gem 'devise'
 
+# 三方平台 OAuth 验证登陆
+# gem 'omniauth'
+# gem 'omniauth-github'
+# gem 'omniauth-oauth2'
+# gem 'omniauth-qq'
 #照片处理
 gem "mini_magick"
 

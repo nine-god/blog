@@ -1,14 +1,38 @@
 Rails.application.routes.draw do
+  resource :abouts
+
   resources :articles do 
   	collection do 
   		post :preview
   	end
   end
-  
-  devise_for :users
-  resources :users
-  resource :abouts
+
   resource :photos 
+
+  get 'users/sign_in' , to: 'auth/sessions#new' , as: 'new_user_session'
+  # post 'users/sign_in' , to: 'auth/sessions#new' , as: 'new_user_session'
+  get 'users/sign_up' , to: 'auth/users#new' 
+  delete 'users/sign_out', to: 'auth/sessions#destroy', as: 'destroy_user_session'
+  scope module: 'auth' do
+    resources :users
+    resource :session
+  end
+
+  namespace :auth do 
+
+    get 'omniauth_callbacks/qq' , to: 'omniauth_callbacks#qq' 
+    get 'omniaut_authorize/redirect' , to: 'omniauth_callbacks#authoriz' ,as: 'omniauth_authorize'
+
+
+  end
+
+
+
+  # get 'auth/omniauth_callbacks/qq' , to: 'auth/omniauth_callbacks#qq' 
+  # get 'auth/omniaut_authorize/redirect' , to: 'auth/omniauth_callbacks#authoriz' ,as: 'omniauth_authorize'
+
+  
+
   get 'photo/*name', to: 'photos#show', format: true,constraints: { format: 'png' }
   # get 'home/about' 
   root "home#show"
