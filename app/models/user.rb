@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :articles
   has_many :photos
   has_many :dmusers
+  has_many :comments
 
   validates :username, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true , if: :with_provider?

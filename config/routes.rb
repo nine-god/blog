@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resource :abouts
 
   resources :articles do 
+    resources :comments
   	collection do 
   		post :preview
   	end

@@ -11,6 +11,24 @@
 			<% if user_signed_in? && (current_user.id == @article.user_id || current_user.admin? )%>
 			<%= link_to '编辑', edit_article_path(@article),{ class: "btn btn-default"} %>  <%= link_to '删除', @article, {method: :delete,class: "btn btn-default", data: { confirm: '删除后，将无法恢复！确定要删除？' }} %>
 			<% end %>
+			<hr>
+			<h4>共收到 <%= @article.comments.length %> 条回复 </h4>
+			<hr>
+			<%= render @article.comments %>
+			 
+			<h4>评论:</h4>
+			<%= form_for([@article, @article.comments.build]) do |f| %>
+	
+			  <p>
+			    <%= f.text_area :body %>
+			  </p>
+			  <p>
+			    <%= f.submit '提交评论' %>
+			  </p>
+			<% end %>
+			<% unless user_signed_in? %>
+			<%= render "auth/sessions/links" %>
+			<% end %>
 		</div>
 	</div>
 </div>
