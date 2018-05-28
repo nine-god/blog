@@ -5,7 +5,7 @@ module Auth
     def authoriz
       client_id = ENV["QQ_APP_ID"] 
       client_secret = ENV["QQ_APP_KEY"]
-      redirect_uri = "http://192.168.1.104/auth/omniauth_callbacks/qq"
+      redirect_uri = "http://www.nine-god.com/auth/omniauth_callbacks/qq"
       # p params["format"]
       uri = URI('https://graph.qq.com/oauth2.0/authorize')
       params = { 
@@ -24,7 +24,7 @@ module Auth
       # "code"=>"BF1BD1B324584A27D7B1835EE6F0A06A", "state"=>"login"
       client_id = ENV["QQ_APP_ID"] 
       client_secret = ENV["QQ_APP_KEY"]
-      redirect_uri = "http://192.168.1.104/auth/omniauth_callbacks/qq"
+      redirect_uri = "http://www.nine-god.com/auth/omniauth_callbacks/qq"
       code = params[:code]
       state = params[:state]
       obj_qq = Oauth::Qq.new
