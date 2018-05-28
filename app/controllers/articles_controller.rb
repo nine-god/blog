@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!,except: [:index,:show]
-  before_action :authenticate_admin!,except: [:index,:show,:new,:create]
+  before_action :authenticate_admin!,except: [:index,:show]
   # GET /articles
   # GET /articles.json
   def index
@@ -88,6 +88,19 @@ class ArticlesController < ApplicationController
     end
 
     def authenticate_admin!
-      redirect_to root_path , notice: '您没有权限！' if current_user.id != @article.user_id && !current_user.admin?
+      unless current_user.publish_articles_admin?
+        redirect_to root_path , notice: '您没有权限！'
+        return
+      end
+
+      if params["action"] == "new" || params["action"] == "create" 
+        return 
+      end
+
+      #更新和删除，需要是作者或者是管理员
+      if current_user.id != @article.user_id && !current_user.admin?
+        redirect_to root_path , notice: '您没有权限！' 
+        return 
+      end
     end
 end
