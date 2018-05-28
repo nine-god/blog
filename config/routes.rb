@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   resource :abouts
 
   resources :articles do 
@@ -16,6 +17,7 @@ Rails.application.routes.draw do
   scope module: 'auth' do
     resources :users
     resource :session
+    resources :roles
   end
 
   namespace :auth do 

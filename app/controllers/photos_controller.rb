@@ -1,6 +1,6 @@
 class PhotosController < ApplicationController
 	before_action :authenticate_user!,except: [:show]
-
+  	before_action :authenticate_admin!,except: [:show]
 	def create 		
 	    @photo = Photo.new(
 	    	file:params[:file].tempfile,
@@ -28,4 +28,10 @@ class PhotosController < ApplicationController
 	    end
 	    send_data( source_data, :filename => filename )
 	end
+
+	private
+
+	def authenticate_admin!
+      redirect_to root_path , notice: '您没有权限！'  unless current_user.publish_articles_admin?
+    end
 end

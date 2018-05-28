@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @role.name %>
+</p>
+
+<p>
+  <strong>Describe:</strong>
+  <%= @role.describe %>
+</p>
+
+<p>
+  <strong>Admin:</strong>
+  <%= @role.admin %>
+</p>
+
+<p>
+  <strong>Publish articles:</strong>
+  <%= @role.publish_articles %>
+</p>
+
+<p>
+  <strong>Publish comments:</strong>
+  <%= @role.publish_comments %>
+</p>
+
+<%= link_to 'Edit', edit_role_path(@role) %> |
+<%= link_to 'Back', roles_path %>

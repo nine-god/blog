@@ -13,6 +13,7 @@ class User < ApplicationRecord
 
   validate :password_must_be_present , if: :with_provider?
   validate :create_default_name 
+  before_save :binding_role
   def with_provider?
     self.provider.blank?
   end
@@ -35,19 +36,14 @@ class User < ApplicationRecord
         end
       end
   end
-  # def User.from_omniauth(auth)
-  #   where(email: auth["openid"], username: auth["openid"]).first_or_create do |user|
-  #     user.email = auth["openid"]
-  #     user.password = Devise.friendly_token[0,20]
-  #     user.password_confirmation = user.password
-  #     user.name = auth["nickname"]   # assuming the user model has a name
-  #     user.username = auth["openid"]
-      
-  #     # If you are using confirmable and the provider(s) you use validate emails, 
-  #     # uncomment the line below to skip the confirmation emails.
-  #     user.skip_confirmation!
-  #   end
-  # end
+
+  def admin?
+    Role.admin_role.id == self.role_id
+  end
+
+  def publish_articles_admin?
+    Role.find(self.role_id).publish_articles
+  end
   private 
   def password_must_be_present
     errors.add(:password, "cannot null") unless encrypted_password.present?
@@ -55,6 +51,10 @@ class User < ApplicationRecord
 
   def create_default_name
     self.name = username  if self.name.blank? 
+  end
+  def binding_role
+    self.role_id = Role.admin_role.id if self.role_id.nil? && User.first.nil? 
+    self.role_id = Role.guest_role.id if self.role_id.nil?
   end
 
 end

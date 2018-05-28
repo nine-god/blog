@@ -39,7 +39,8 @@ module Auth
 		end
 
 		# Never trust parameters from the scary internet, only allow the white list through.
-		def user_params			
+		def user_params		
+			current_user.admin?	
 			params.require(:user).permit(:username,:email,:password,:password_confirmation, :name,:profile)
 		end
 	end

@@ -1,8 +1,9 @@
 class AboutsController < ApplicationController
 	before_action :set_about, only: [:show, :edit, :update]
-	before_action :authenticate_user!,except: [:index,:show]
+	before_action :authenticate_user!,except: [:show]
+	before_action :authenticate_admin!,except: [:show]
 	def show 
-		@users = User.all
+		@users = User.where(role_id: [Role.user_role.id ,Role.admin_role.id])
 	end
 
 	def edit
@@ -27,5 +28,8 @@ class AboutsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def about_params
       params.require(:about).permit(:text)
+    end
+    def authenticate_admin!
+      redirect_to root_path , notice: '您没有权限！' unless current_user.admin?
     end
 end

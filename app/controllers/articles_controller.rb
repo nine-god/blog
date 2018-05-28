@@ -1,6 +1,7 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!,except: [:index,:show]
+  before_action :authenticate_admin!,except: [:index,:show,:new,:create]
   # GET /articles
   # GET /articles.json
   def index
@@ -84,5 +85,9 @@ class ArticlesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
       params.require(:article).permit(:title, :text)
+    end
+
+    def authenticate_admin!
+      redirect_to root_path , notice: '您没有权限！' if current_user.id != @article.user_id && !current_user.admin?
     end
 end

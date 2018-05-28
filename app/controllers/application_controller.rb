@@ -3,13 +3,13 @@ class ApplicationController < ActionController::Base
 	before_action do 
 		session[:user_id] ||= cookies.signed[:user_id]		
 	end
-
+	
 	private
 
 	include SessionsHelper
 
-	def authenticate_user!
-		redirect_to new_user_session_path unless user_signed_in?
+	def authenticate_user!		
+		redirect_to new_user_session_path, notice: '您没有登录，请先登录账号！' unless user_signed_in?
 	end
 
 	def sign_in(user)		
@@ -21,5 +21,7 @@ class ApplicationController < ActionController::Base
 		session.delete(:user_id)		
 		cookies.delete(:user_id)		
 	end
-	# heper_method :current_user
+
+
+
 end

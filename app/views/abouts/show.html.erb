@@ -4,11 +4,11 @@
       <h2>关于小屋</h2>
       <p class="lead"><%= raw markdown @about.text %></p>
 
-      <% if user_signed_in?  %>
+      <% if user_signed_in? &&  current_user.admin?  %>
       <%= link_to '编辑', edit_abouts_path(@about),{ class: "btn btn-default"} %>  
       <% end %>
 
-      <!-- <h2>当前住户</h2>
+      <h2>当前住户</h2>
       <div class="panel-body" >
         <% @users.each do |user| %>
           <div class="user-label">
@@ -17,7 +17,7 @@
               </h4>
           </div>
         <% end %>
-      </div>  -->
+      </div> 
     </div>
 
 

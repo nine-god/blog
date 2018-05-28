@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  describe: MyText
+  admin: false
+  publish_articles: false
+  publish_comments: false
+
+two:
+  name: MyString
+  describe: MyText
+  admin: false
+  publish_articles: false
+  publish_comments: false

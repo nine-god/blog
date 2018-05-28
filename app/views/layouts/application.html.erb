@@ -71,6 +71,9 @@
 		            <li><%= link_to current_user.username %></li>
 		            <li role="separator" class="divider"></li>
 		            <li><%= link_to '个人资料设置',user_path(current_user.id) %></li>
+		            <% if  current_user.admin? %>
+		            <li><%= link_to '角色管理',roles_path()  %></li>
+		            <% end %>
 		            <li role="separator" class="divider"></li>
 		            <li><%= link_to "退出" , destroy_user_session_path , {method: "delete"}%></li>
 		          </ul>
