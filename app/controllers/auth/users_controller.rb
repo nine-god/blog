@@ -40,12 +40,13 @@ module Auth
 		end
 
 		# Never trust parameters from the scary internet, only allow the white list through.
-		def user_params	
+		def user_params				
 			#用户名创建后不可修改	
-			if  params["action"] == "create" 
+			if  request.request_method == "POST" 
 				params.require(:user).permit(:username,:email,:password,:password_confirmation, :name,:profile)
 				return 
 			end
+
 			params.require(:user).permit(:email,:password,:password_confirmation, :name,:profile)
 
 		end

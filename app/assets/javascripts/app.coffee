@@ -1,7 +1,5 @@
 #= require rails-ujs
 #= require turbolinks
-#= require underscore
-#= require backbone
 #= require home
 #= require articles
 #= require abouts

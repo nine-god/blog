@@ -89,17 +89,14 @@ class ArticlesController < ApplicationController
 
     def authenticate_admin!
       unless current_user.publish_articles_admin?
-        redirect_to root_path , notice: '您没有权限！'
+        redirect_to root_path , notice: '您没有权限！访客不能发表博文!'
         return
       end
 
-      if params["action"] == "new" || params["action"] == "create" 
-        return 
-      end
 
       #更新和删除，需要是作者或者是管理员
       if current_user.id != @article.user_id && !current_user.admin?
-        redirect_to root_path , notice: '您没有权限！' 
+        redirect_to root_path , notice: '您不是作者,没有权限！' 
         return 
       end
     end
