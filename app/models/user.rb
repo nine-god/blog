@@ -10,10 +10,10 @@ class User < ApplicationRecord
 
   validates :username, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true , if: :with_provider?
-  validates :password, :confirmation => true 
+  validates :password, :confirmation => true
 
   validate :password_must_be_present , if: :with_provider?
-  validate :create_default_name 
+  validate :create_default_name
   before_save :binding_role
   def with_provider?
     self.provider.blank?
@@ -25,9 +25,9 @@ class User < ApplicationRecord
       self.encrypted_password = self.class.hashed_password(password)
     end
   end
-  
+
   def self.hashed_password(password)
-    Digest::SHA2.hexdigest(password)    
+    Digest::SHA2.hexdigest(password)
   end
 
   def self.authenticate(args={})
@@ -42,19 +42,23 @@ class User < ApplicationRecord
     Role.admin_role.id == self.role_id
   end
 
+  def role
+    Role.find(self.role_id)
+  end
+
   def publish_articles_admin?
     Role.find(self.role_id).publish_articles
   end
-  private 
+  private
   def password_must_be_present
     errors.add(:password, "cannot null") unless encrypted_password.present?
   end
 
   def create_default_name
-    self.name = username  if self.name.blank? 
+    self.name = username  if self.name.blank?
   end
   def binding_role
-    self.role_id = Role.admin_role.id if self.role_id.nil? && User.first.nil? 
+    self.role_id = Role.admin_role.id if self.role_id.nil? && User.first.nil?
     self.role_id = Role.guest_role.id if self.role_id.nil?
   end
 

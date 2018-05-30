@@ -1,15 +1,22 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  describe: MyText
+admin:
+  name: admin
+  describe: admin
+  admin: true
+  publish_articles: true
+  publish_comments: true
+
+guest:
+  name: guest
+  describe: guest
   admin: false
   publish_articles: false
   publish_comments: false
 
-two:
-  name: MyString
-  describe: MyText
+user:
+  name: admin
+  describe: admin
   admin: false
-  publish_articles: false
-  publish_comments: false
+  publish_articles: true
+  publish_comments: true

@@ -4,8 +4,30 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
-two: {}
-# column: value
+guest:
+  username: guest
+  email: guest_email1
+  name: guest
+  encrypted_password: 240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9
+  provider: nil
+  uid: nil
+  role_id: 1
+
+
+user:
+  username: user
+  email: user_email1
+  name: user
+  encrypted_password: 240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9
+  provider: nil
+  uid: nil
+  role_id: 2
+
+admin:
+  username: admin
+  email: admin_email1
+  name: admin
+  encrypted_password: 240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9
+  provider: nil
+  uid: nil
+  role_id: 3
