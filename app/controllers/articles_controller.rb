@@ -75,7 +75,7 @@ class ArticlesController < ApplicationController
       format.json
     end
   end
-  
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_article
@@ -93,11 +93,16 @@ class ArticlesController < ApplicationController
         return
       end
 
-
+      if params["action"]=="new"
+        return
+      end
+      if request.request_method == "POST"
+        return
+      end
       #更新和删除，需要是作者或者是管理员
       if current_user.id != @article.user_id && !current_user.admin?
-        redirect_to root_path , notice: '您不是作者,没有权限！' 
-        return 
+        redirect_to root_path , notice: '您不是作者,没有权限！'
+        return
       end
     end
 end
