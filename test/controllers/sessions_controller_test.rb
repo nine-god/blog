@@ -2,16 +2,13 @@ require 'test_helper'
 
 class SessionsControllerTest < ActionDispatch::IntegrationTest
   setup do
-
+    @guest = users(:guest)
     @user_info={
-      username: "test_guest1",
-      email:"test_guest1@qq.com",
-      password: 'test_guest1',
-      password_confirmation: 'test_guest1'
+      username: @guest.username,
+      email:@guest.email,
+      password: 'test',
+      password_confirmation: 'test'
     }
-    post users_url(user: @user_info)
-    delete destroy_user_session_url()
-    @guest = User.find_by_username("test_guest1")
   end
 
   test "should new" do

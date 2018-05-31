@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :photos
   has_many :dmusers
   has_many :comments
+  belongs_to :role
 
   validates :username, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true , if: :with_provider?
@@ -14,7 +15,9 @@ class User < ApplicationRecord
 
   validate :password_must_be_present , if: :with_provider?
   validate :create_default_name
-  before_save :binding_role
+
+  before_validation :binding_role
+
   def with_provider?
     self.provider.blank?
   end

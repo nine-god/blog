@@ -13,6 +13,7 @@ module Auth
             sign_in(@user)
             format.html { redirect_to user_path(@user), notice: '用户注册成功！' }
           else
+            p @user.errors
             format.html { render :new }
 
           end

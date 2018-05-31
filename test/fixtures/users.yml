@@ -6,28 +6,45 @@
 #
 guest:
   username: guest
-  email: guest_email1
+  email: guest_email@test.com
   name: guest
-  encrypted_password: 240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9
+  encrypted_password: 9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08 #=> test
   provider: nil
   uid: nil
-  role_id: 1
+  role: guest
 
 
 user:
   username: user
-  email: user_email1
+  email: user_email@test.com
   name: user
-  encrypted_password: 240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9
+  encrypted_password: 9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08 #=> test
   provider: nil
   uid: nil
-  role_id: 2
+  role: user
+
+user1:
+  username: user1
+  email: uesr1_email@test.com
+  name: user1
+  encrypted_password: 9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08 #=> test
+  provider: nil
+  uid: nil
+  role: user
+user2:
+  username: user2
+  email: user2_email@test.com
+  name: user2
+  encrypted_password: 9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08 #=> test
+  provider: nil
+  uid: nil
+  role: user
 
 admin:
   username: admin
-  email: admin_email1
+  email: admin_email@test.com
   name: admin
-  encrypted_password: 240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9
+  encrypted_password: 9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08 #=> test
   provider: nil
   uid: nil
-  role_id: 3
+  role: admin

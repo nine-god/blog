@@ -12,7 +12,7 @@ guest:
   describe: guest
   admin: false
   publish_articles: false
-  publish_comments: false
+  publish_comments: true
 
 user:
   name: admin
