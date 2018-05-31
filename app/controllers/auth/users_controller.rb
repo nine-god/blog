@@ -27,7 +27,7 @@ module Auth
     def update
       respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to user_path(@user), notice: 'User was successfully updated.' }
+        format.html { redirect_to user_path(@user), notice: '用户资料修改成功!' }
       else
         format.html { render :edit }
       end
