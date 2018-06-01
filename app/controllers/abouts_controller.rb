@@ -2,7 +2,7 @@ class AboutsController < ApplicationController
 	before_action :set_about, only: [:show, :edit, :update]
 	before_action :authenticate_user!,except: [:show]
 	before_action :authenticate_admin!,except: [:show]
-	def show 
+	def show
 		@users = User.where(role_id: [Role.user_role.id ,Role.admin_role.id])
 	end
 
@@ -30,6 +30,6 @@ class AboutsController < ApplicationController
       params.require(:about).permit(:text)
     end
     def authenticate_admin!
-      redirect_to root_path , notice: '您没有权限！' unless current_user.admin?
+      redirect_to new_user_session_path , notice: '您没有权限，请登录管理员账号！' unless current_user.admin?
     end
 end

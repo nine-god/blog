@@ -1,7 +1,7 @@
 class PhotosController < ApplicationController
 	before_action :authenticate_user!,except: [:show]
-  	before_action :authenticate_admin!,except: [:show]
-	def create 		
+  before_action :authenticate_admin!,except: [:show]
+	def create
 	    @photo = Photo.new(
 	    	file:params[:file].tempfile,
 	    	user_id:current_user.id,
@@ -23,7 +23,7 @@ class PhotosController < ApplicationController
 	      source_data = File.read(file_path)
 	    else
 	    	photo_url = "http://#{request.host_with_port}/photo/"+filename
-			photo = Photo.where(name: photo_url).first			
+			photo = Photo.where(name: photo_url).first
 			source_data = photo.source_data
 	    end
 	    send_data( source_data, :filename => filename )

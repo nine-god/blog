@@ -15,8 +15,14 @@ guest:
   publish_comments: true
 
 user:
-  name: admin
-  describe: admin
+  name: user
+  describe: user
+  admin: false
+  publish_articles: true
+  publish_comments: true
+no_user:
+  name: no_user
+  describe: no_user
   admin: false
   publish_articles: true
   publish_comments: true
