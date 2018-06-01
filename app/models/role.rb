@@ -1,5 +1,5 @@
 class Role < ApplicationRecord
-
+  has_many :users
 	def self.guest_role
 		self.find_by_name('guest')
 	end

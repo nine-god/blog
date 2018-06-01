@@ -44,19 +44,22 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
       post article_comments_url(@article1), params: { comment: { body: @user1_article1_comment.body } }
     end
     assert_equal @user1.id , Comment.last.user_id
-    assert_redirected_to article_path(@article1), notice: '评论添加成功！'
+    assert_redirected_to article_path(@article1)
+    assert_equal '评论添加成功！',flash[:notice]
   end
 
   test "should destroy" do
     #登录用户1
     post session_url(user: @user1_info)
     delete article_comment_url(@article1,@user1_article1_comment)
-    assert_redirected_to article_path(@article1), notice: '评论已删除！'
+    assert_redirected_to article_path(@article1)
+    assert_equal '评论已删除！',flash[:notice]
 
     #登录管理员
-    post session_url(user: @user1_info)
+    post session_url(user: @admin_info)
     delete article_comment_url(@article1,@user2_article1_comment)
-    assert_redirected_to article_path(@article1), notice: '评论已删除！'
+    assert_redirected_to article_path(@article1)
+    assert_equal '评论已删除！',flash[:notice]
   end
 
   test "exception can not  create" do
@@ -83,7 +86,7 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
     assert_no_difference('Comment.count') do
       delete article_comment_url(@article1,@user1_article1_comment)
     end
-    assert_redirected_to  article_path(@article1), notice: '您不是作者,没有权限！'
-
+    assert_redirected_to  article_path(@article1)
+    assert_equal '您不是作者,没有权限！',flash[:notice]
   end
 end

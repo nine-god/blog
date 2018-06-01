@@ -34,6 +34,13 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     }
   end
 
+  test "should get index" do
+    #登录管理员
+    post session_url(user: @admin_info)
+    get users_url
+    assert_response :success
+  end
+
   test "should new" do
     get users_sign_up_url()
     assert_response :success
@@ -168,6 +175,27 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_equal @user2_info[:username] , @user2.username
     assert_equal user3[:email] , @user2.email
     assert_not_equal old_password , @user2.encrypted_password
+  end
+  #exception
+  test "exception can not get index" do
+
+    get users_url
+    assert_redirected_to new_user_session_url
+    assert_equal '您没有登录，请先登录账号！' ,flash[:notice]
+
+    #登录管理员
+    post session_url(user: @guest_info)
+    get users_url
+    assert_redirected_to root_path
+    assert_equal '您没有权限！' ,flash[:notice]
+
+    #登录管理员
+    post session_url(user: @user1_info)
+    get users_url
+    assert_redirected_to root_path
+    assert_equal '您没有权限！' ,flash[:notice]
+
+
   end
 
 end

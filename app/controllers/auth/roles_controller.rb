@@ -6,7 +6,10 @@ module Auth
     # GET /roles
     # GET /roles.json
     def index
-      @roles = Role.all
+      @offset = params[:offset] || 0
+      @limit = params[:limit] || 10
+      @total = Role.count
+      @roles = Role.order("id desc").offset(@offset).limit(@limit)
     end
 
     # GET /roles/1
@@ -73,7 +76,7 @@ module Auth
       def role_params
         params.require(:role).permit(:name, :describe, :admin, :publish_articles, :publish_comments)
       end
-      
+
       def authenticate_admin!
         redirect_to new_user_session_path , notice: '您没有权限，请登录管理员账号！' unless current_user.admin?
       end
