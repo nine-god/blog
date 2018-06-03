@@ -1,0 +1,12 @@
+<%= change_time_style notification.created_at %>
+<div>
+  <div class="media-left">
+    <%= link_to notification.actor_name, user_url(notification.actor_id), title: notification.actor_name %>
+  </div>
+  <div class="media-body">
+    <%= render partial: "#{notification.notify_type.underscore}", locals: { notification: notification } %>  </div>
+  <div class="media-right">
+    <%= notification.created_at.strftime('%H:%M') %>
+  </div>
+</div>
+<hr>

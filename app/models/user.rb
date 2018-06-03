@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :photos
   has_many :dmusers
   has_many :comments
+  has_many :notifications
   belongs_to :role
 
   validates :username, presence: true, uniqueness: true
