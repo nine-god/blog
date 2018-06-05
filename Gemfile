@@ -48,6 +48,10 @@ gem "mini_magick"
 # 队列
 gem 'sidekiq'
 
+# Redis
+gem 'redis'
+gem 'redis-namespace'
+
 # HTML Pipeline
 gem 'html-pipeline'
 # gem 'html-pipeline-rouge_filter'
