@@ -36,7 +36,7 @@ module ApplicationHelper
 			arr << "<li class='disabled'><a href='#{url}?offset=#{(current_page-1)*limit}&&limit=#{limit}'>下一页</a></li>"
 		else
 			arr << "<li><a href='#{url}?offset=#{(current_page)*limit}&&limit=#{limit}' class='link'>下一页</a></li>"
-		end		    
+		end
 		arr << "<li><a href='#{url}?offset=#{(last_page-1)*limit}&&limit=#{limit}' class='link'>尾页</a></li>"
 		return raw arr.join("")
 	end
@@ -44,16 +44,32 @@ module ApplicationHelper
 		controller_name = args[:controller_name]
 		case controller_name
 		when 'articles'
-			title = "九神小屋"
-		when 'home'
-			title = "九神小屋"
+			case params[:action]
+			when "show"
+				title = Article.find_by_id(params[:id]).title
+			when "new"
+				title = "新建博文"
+			when "edit"
+				title ="编辑博文"
+			else
+				title = "博文"
+			end
+
+			title += " · "
 		when 'abouts'
-			title = "九神小屋"
+			title = "关于小屋"
+			title += " · "
 		when 'users'
-			title = "九神小屋"
-		else 
-			title = "九神小屋"
+			if params[:id]
+				user = User.find_by_id(params[:id])
+				title = "#{user.username}(#{user.name})"
+			else
+				title = "用户列表"
+			end
+			title += " · "
+		else
+			title = ""
 		end
-		return raw "<title>"+title+"</title>"
+		return raw "<title>"+title+"九神小屋"+ "</title>"
 	end
 end
