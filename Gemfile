@@ -45,6 +45,9 @@ gem 'jbuilder', '~> 2.5'
 #照片处理
 gem "mini_magick"
 
+# 队列
+gem 'sidekiq'
+
 # HTML Pipeline
 gem 'html-pipeline'
 # gem 'html-pipeline-rouge_filter'

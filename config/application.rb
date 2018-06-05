@@ -16,6 +16,7 @@ module Blog
     config.i18n.default_locale = 'zh-CN'
 
 
+    config.active_job.queue_adapter = :sidekiq
     # config.assets.paths << Rails.root.join("lib")
 
     config.autoload_paths += [
@@ -32,7 +33,7 @@ module Blog
     ActionMailer::Base.smtp_settings = {
       :address        => "smtp.qq.com", # default: localhost
       :port           => '587',   # default: 25
-      :domain         => "qq.com",               
+      :domain         => "qq.com",
       :user_name      => ENV["EMAIL_USER_NAME"],
       :password       => ENV["EMAIL_KEY_BASE"],
       :authentication => :plain                 # :plain, :login or :cram_md5

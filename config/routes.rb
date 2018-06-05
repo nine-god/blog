@@ -1,7 +1,7 @@
+require 'sidekiq/web'
 Rails.application.routes.draw do
 
-  get 'notifications/index'
-  delete 'notifications/clean'
+
 
   resource :abouts
 
@@ -32,7 +32,13 @@ Rails.application.routes.draw do
 
   end
 
+  get 'notifications/index'
+  delete 'notifications/clean'
 
+  mount Sidekiq::Web => '/sidekiq',  constraints: -> (request){
+    user = User.find_by_id(request.session[:user_id])
+    user && user.admin?
+  }
 
   # get 'auth/omniauth_callbacks/qq' , to: 'auth/omniauth_callbacks#qq'
   # get 'auth/omniaut_authorize/redirect' , to: 'auth/omniauth_callbacks#authoriz' ,as: 'omniauth_authorize'
