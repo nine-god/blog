@@ -13,8 +13,11 @@
 # Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*
+!/tmp/pids
+/tmp/pids/*
 !/log/.keep
 !/tmp/.keep
+!/tmp/pids/.keep
 
 /node_modules
 /yarn-error.log
