@@ -29,8 +29,8 @@ module Blog
     # Settings in config/enviblogblogronments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
-
-    ActionMailer::Base.smtp_settings = {
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
       :address        => "smtp.qq.com", # default: localhost
       :port           => '587',   # default: 25
       :domain         => "qq.com",
@@ -38,6 +38,5 @@ module Blog
       :password       => ENV["EMAIL_KEY_BASE"],
       :authentication => :plain                 # :plain, :login or :cram_md5
     }
-
   end
 end

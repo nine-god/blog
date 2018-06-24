@@ -56,7 +56,7 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
     post session_url(user: user)
     assert_redirected_to new_user_session_path
     assert_nil  session[:user_id]
-    assert_equal '登录失败！' , flash[:notice]
+    assert_equal '登录失败！' , flash[:alert]
   end
 
   #exception
@@ -68,6 +68,6 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
     post session_url(user: user)
     assert_redirected_to new_user_session_path
     assert_nil  session[:user_id]
-    assert_equal '登录失败！' , flash[:notice]
+    assert_equal '登录失败！' , flash[:alert]
   end
 end

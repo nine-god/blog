@@ -10,6 +10,7 @@ guest:
   email: guest_email@test.com
   name: guest
   encrypted_password: 9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08 #=> test
+  confirmed_at: "2018-01-01"
   provider: nil
   uid: nil
   role: guest
@@ -21,6 +22,7 @@ user:
   email: user_email@test.com
   name: user
   encrypted_password: 9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08 #=> test
+  confirmed_at: "2018-01-01"
   provider: nil
   uid: nil
   role: user
@@ -31,6 +33,7 @@ user1:
   email: uesr1_email@test.com
   name: user1
   encrypted_password: 9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08 #=> test
+  confirmed_at: "2018-01-01"
   provider: nil
   uid: nil
   role: user
@@ -40,6 +43,7 @@ user2:
   email: user2_email@test.com
   name: user2
   encrypted_password: 9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08 #=> test
+  confirmed_at: "2018-01-01"
   provider: nil
   uid: nil
   role: user
@@ -50,6 +54,7 @@ admin:
   email: admin_email@test.com
   name: admin
   encrypted_password: 9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08 #=> test
+  confirmed_at: "2018-01-01"
   provider: nil
   uid: nil
   role: admin

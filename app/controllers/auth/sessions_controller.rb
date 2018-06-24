@@ -8,11 +8,14 @@ module Auth
 			respond_to do |format|
 				@user = User.authenticate(user_params)
 				if @user
-					sign_in(@user)
-					format.html { redirect_to root_url, notice: '登录成功！' }
+					if @user.confirmed_at.blank?
+						format.html { redirect_to new_user_session_path, alert: '邮箱尚未验证，请先登录注册邮箱，点击验证邮件中的链接验证账号！' }
+					else
+						sign_in(@user)
+						format.html { redirect_to root_url, notice: '登录成功！' }
+					end
 				else
-					format.html { redirect_to new_user_session_path, notice: '登录失败！' }
-
+					format.html { redirect_to new_user_session_path, alert: '登录失败！' }
 				end
 			end
 		end

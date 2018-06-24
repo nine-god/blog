@@ -54,11 +54,13 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
       password_confirmation: 'test_guest1'
     }
     post users_url(user: user)
-    assert_response :redirect
-    assert_not_nil  session[:user_id]
-    assert_not_nil  cookies[:user_id]
-    assert_equal  User.find(session[:user_id]).role.name,'guest'
-    assert_equal flash["notice"],"用户注册成功！"
+    test_guest1 = User.find_by_username(user[:username])
+    assert_redirected_to user_path(test_guest1)
+    assert_equal flash["notice"],"请登录注册，邮箱激活账号，完成注册！"
+
+    assert_nil  session[:user_id]
+    assert_nil  cookies[:user_id]
+
   end
 
   test "should show" do
@@ -113,6 +115,8 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     }
     post users_url(user: user)
     @user = User.find_by_username(user[:username])
+    @user.confirmed_at = Time.now
+    @user.save
     post session_url(user: user)
     old_password = @user.encrypted_password
     user2={
@@ -128,7 +132,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     @user.reload
 
     assert_equal user[:username] , @user.username
-    assert_equal user2[:email] , @user.email
+    assert_equal user[:email] , @user.email
     assert_not_equal old_password , @user.encrypted_password
   end
 
@@ -173,7 +177,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     @user2.reload
 
     assert_equal @user2_info[:username] , @user2.username
-    assert_equal user3[:email] , @user2.email
+    assert_equal @user2_info[:email] , @user2.email
     assert_not_equal old_password , @user2.encrypted_password
   end
   #exception

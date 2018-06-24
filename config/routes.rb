@@ -19,7 +19,15 @@ Rails.application.routes.draw do
   get 'users/sign_up' , to: 'auth/users#new'
   delete 'users/sign_out', to: 'auth/sessions#destroy', as: 'destroy_user_session'
   scope module: 'auth' do
-    resources :users
+    resources :users do
+      collection do
+        get  :confirmation
+        get  :new_password
+        post :reset_password_mail
+        get  :edit_password
+        put :reset_password
+      end
+    end
     resource :session
     resources :roles
   end

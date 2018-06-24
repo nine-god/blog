@@ -16,8 +16,21 @@ class User < ApplicationRecord
 
   validate :password_must_be_present , if: :with_provider?
   validate :create_default_name
+  # validate :create_confirmation_token
 
   before_validation :binding_role
+  before_create :create_confirmation_token
+  def create_confirmation_token
+    self.confirmation_token = Digest::SHA2.hexdigest(Time.now.to_s)
+  end
+  def create_reset_password_token
+    self.reset_password_token = Digest::SHA2.hexdigest(Time.now.to_s)
+  end
+  after_create :async_create_confirmation_mailer, on: :create
+  def async_create_confirmation_mailer
+    #仅当用户通过email邮箱注册账号时，需要做邮箱确认验证
+    UserMailer.confirmation_instructions(self.id).deliver_later if !email.blank? && provider.blank?
+  end
 
   def with_provider?
     self.provider.blank?
@@ -35,11 +48,11 @@ class User < ApplicationRecord
   end
 
   def self.authenticate(args={})
-      if user = find_by_username(args[:username])
-        if user.encrypted_password == hashed_password(args[:password])
-          user
-        end
+    if user = find_by_username(args[:username])
+      if user.encrypted_password == hashed_password(args[:password])
+        user
       end
+    end
   end
 
   def admin?
@@ -53,6 +66,9 @@ class User < ApplicationRecord
   def publish_articles_admin?
     Role.find(self.role_id).publish_articles
   end
+
+
+
   private
   def password_must_be_present
     errors.add(:password, "cannot null") unless encrypted_password.present?
