@@ -17,6 +17,10 @@
 			  <%= @user.email %>
 			</p>
 			<p>
+			  <strong>注册时间:</strong>
+			  <%= change_time_style(@user.created_at) %>
+			</p>
+			<p>
 			  <strong>简介</strong>
 			  <%= raw markdown @user.profile %>
 			</p>

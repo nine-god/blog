@@ -51,12 +51,12 @@ module Auth
       if @user.failed_attempts >= max_attempts
         @user.failed_attempts = 0
         @user.save
-        redirect_to root_path ,  alert: "已达到最大验证测试，请重新登录邮箱，点击验证邮件中的链接验证账号！"
+        redirect_to root_path ,  alert: "已达到最大验证次数，请重新登录邮箱，点击验证邮件中的链接验证账号！"
         UserMailer.confirmation_instructions(@user.id).deliver_later
         return
       end
 
-      if @user.confirmation_token != params[:token]
+      if @user.confirmation_token != params[:confirmation_token]
         @user.failed_attempts+=1
         @user.save
         redirect_to root_path ,  alert: "验证失败，剩余 #{ max_attempts - @user.failed_attempts} 次重试机会!"

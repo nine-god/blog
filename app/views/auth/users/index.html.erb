@@ -7,9 +7,10 @@
             <thead>
                 <tr class="info">
                   <th style="min-width: 30%" >账号名</th>
-                  <th style="min-width: 20%" >名字</th>
+                  <th style="min-width: 10%" >名字</th>
                   <th style="min-width: 20%" >邮箱</th>
                   <th style="min-width: 10%" >第三方平台</th>
+                  <th style="min-width: 10%" >注册时间</th>
                   <th style="min-width: 10%" >角色</th>
                   <th style="min-width: 10%" >操作</th>
                 </tr>
@@ -22,8 +23,8 @@
                 <td><%= user.name %></td>
                 <td><%= user.email %></td>
                 <td><%= user.provider %></td>
+                <td><%= change_time_style(user.created_at) %></td>
                 <td><%= user.role.name %></td>
-
                 <td><%= link_to 'Show', user %> | <%= link_to 'Edit', edit_user_path(user) %></td>
               </tr>
             <% end %>
