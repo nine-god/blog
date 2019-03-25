@@ -1,0 +1,15 @@
+<% comment = notification.second_target %>
+
+<% article = notification.target %>
+
+  <div class="media-heading">
+    在博文
+    <%= link_to article.title, article_path(article) %> 评论了：
+  </div>
+  <div class="media-content">
+  <% if comment.delete_flag %>
+    <s><%= comment.body %></s>
+  <% else %>
+    <%= comment.body %>
+  <% end %>
+  </div>

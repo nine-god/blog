@@ -1,0 +1,49 @@
+.articles-index a{
+	color:#4A4A4A;
+	text-decoration: none;
+}
+.articles-index a:hover {
+	color:#333333;
+}
+.articles-index article header {
+	font-family: "Open Sans", sans-serif;
+}
+.articles-index article header a {
+	font-weight:bold;
+}
+.articles-index article section {
+	/*margin: 0;*/
+	/*font-size: 16.2px*/
+	line-height: 1.7em;
+}
+.articles-index article footer,
+.articles-index article footer a {
+	color:#9EABB3;
+}
+
+.articles-index article footer a:hover {
+	color:#9EABB3;
+	text-decoration: underline;
+}
+.article-header input.form-control{
+	font-size: 36px;
+}
+
+.article .info,
+.article .info a{
+	color:#9EABB3;
+}
+.article .info a:hover {
+	color:#9EABB3;
+	text-decoration: underline;
+}
+
+.pagination a {
+	/*color:#03baa6 ;*/
+}
+
+.pagination > li > a:focus, .pagination > li > a:hover, .pagination > li > span:focus, .pagination > li > span:hover {
+	color: #fff;
+	background-color: #12a191;
+	border-color: #ddd;
+}

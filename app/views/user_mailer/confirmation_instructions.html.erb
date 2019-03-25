@@ -1,0 +1,6 @@
+
+<p>亲爱的用户  <%= @email %> ，您好！</p>
+
+<p>欢迎注册 九神小屋，请点击以下链接激活：</p>
+
+<p><%= link_to '确认激活', confirmation_users_url(id:@user_id, confirmation_token: @token) %></p>

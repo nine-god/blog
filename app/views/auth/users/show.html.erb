@@ -1,0 +1,32 @@
+
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1">
+			<p>
+			  <strong>账户</strong>
+			  <%= @user.username %>
+			</p>
+			<p>
+			  <strong>名字</strong>
+			  <%= @user.name %>
+			</p>
+
+			<p>
+			  <strong>Email:</strong>
+			  <%= @user.email %>
+			</p>
+			<p>
+			  <strong>注册时间:</strong>
+			  <%= change_time_style(@user.created_at) %>
+			</p>
+			<p>
+			  <strong>简介</strong>
+			  <%= raw markdown @user.profile %>
+			</p>
+			<% if user_signed_in? && current_user.id == @user.id %>
+			<%= link_to '编辑', edit_user_path(@user),{ class: "btn btn-default"} %>  
+			<% end %>
+		</div>
+	</div>
+</div>

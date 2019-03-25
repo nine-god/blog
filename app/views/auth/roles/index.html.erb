@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row">
+      <div class="col-sm-12">
+      <h1>角色列表</h1>
+        <div class="panel panel-default">
+          <table class="table table-striped table-bordered ">
+            <thead>
+                <tr class="info">
+                  <th style="min-width: 10%" >Name</th>
+                  <th style="min-width: 25%" >Describe</th>
+                  <th style="min-width: 10%" >Admin</th>
+                  <th style="min-width: 15%" >Publish articles</th>
+                  <th style="min-width: 15%" >Publish comments</th>
+                  <th style="min-width: 10%" >绑定用户数量</th>
+                  <th style="min-width: 15%" >操作</th>
+                </tr>
+             </thead>
+
+             <% @roles.each_with_index do |role,index| %>
+              <%tr_class= (index%2==0)? "class=success": ""%>
+              <tr <%= tr_class%>>
+                <td><%= role.name %></td>
+                <td><%= role.describe %></td>
+                <td><%= role.admin %></td>
+                <td><%= role.publish_articles %></td>
+                <td><%= role.publish_comments %></td>
+                <td><%= role.users.count %></td>
+                <td><%= link_to 'Show', role %>|  <%= link_to 'Edit', edit_role_path(role) %>| <%= link_to 'Destroy', role, method: :delete, data: { confirm: '删除角色前需要先解绑所有用户，否则删除不成功。确定要删除？' } %></td>
+              </tr>
+            <% end %>
+          </table>
+        </div>
+        <br>
+        <%= link_to 'New Role', new_role_path %>
+        <div class="text-center">
+          <ul class="pagination">
+            <%= generate_pagination(total: @total,offset: @offset , limit: @limit)%>
+          </ul>
+        </div>
+      </div>
+
+
+
+  </div>
+</div>

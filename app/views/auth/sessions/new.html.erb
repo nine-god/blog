@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row text-center" >
+    <h2>用户登录</h2>
+
+    <%= form_for(@user, url: session_path) do |f| %>
+      <div class="field">
+        <%= f.label :username %><br />
+        <%= f.text_field :username, autofocus: true %>
+      </div>
+
+
+
+      <div class="field">
+        <%= f.label :password %><br />
+        <%= f.password_field :password, autocomplete: "off" %>
+      </div>
+
+
+
+      <div class="actions">
+        <%= f.submit "登录" %>
+      </div>
+    <% end %>
+
+    <%= render "links" %>
+  </div><!--/row-->
+</div><!--/.container-->

@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="panel">
+        <div class="panel-body list item-list">
+          <% if @notifications.blank? %>
+          <p class="text-muted text-center" >暂无消息通知</p>
+          <% else %>
+          所有通知
+          <span class="pull-right">
+            <%= link_to "清空", notifications_clean_path, class: 'btn btn-sm btn-danger', id: 'btn-remove-all', method: 'delete', remote: true %>
+          </span>
+          <hr>
+
+          <%= render @notifications %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

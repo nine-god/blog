@@ -1,0 +1,8 @@
+.user-label {
+	overflow: hidden;
+	margin-bottom: 20px;
+	/*width:100px;*/
+}
+.user-label a.label{
+	background-color: #12a191;
+}

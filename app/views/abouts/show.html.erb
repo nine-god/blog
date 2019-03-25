@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <h2>关于小屋</h2>
+      <p class="lead"><%= raw markdown @about.text %></p>
+
+      <% if user_signed_in? &&  current_user.admin?  %>
+      <%= link_to '编辑', edit_abouts_path(@about),{ class: "btn btn-default"} %>  
+      <% end %>
+
+      <h2>当前住户</h2>
+      <div class="panel-body" >
+        <% @users.each do |user| %>
+          <div class="user-label">
+              <h4>
+                <span><%= link_to  user.username ,user_path(user) ,{class: "label"}%></span>
+              </h4>
+          </div>
+        <% end %>
+      </div> 
+    </div>
+
+
+  </div><!-- /.row -->
+</div>

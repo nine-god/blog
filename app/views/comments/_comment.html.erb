@@ -1,0 +1,17 @@
+<p>
+  <strong><%= comment.user_name %>:</strong> |  #<%=  comment.id %>  | <%= change_time_style comment.updated_at %>
+  <% if user_signed_in? && (current_user.id == comment.user.id || current_user.admin?) %>
+	  <%= link_to '删除', [comment.article, comment],
+	               method: :delete,
+	               data: { confirm: '确定删除？' } %>
+  <% end %>
+</p>
+
+<p>
+  <% if comment.delete_flag %>
+  	<s><%= comment.body %></s>
+  <% else %>
+  	<%= comment.body %>
+  <% end %>
+</p>
+<hr>
